@@ -1,22 +1,20 @@
 # Pageflip
 
-An agent skill that writes and audits landing pages built to convert. Works with Claude Code, Codex, Cursor, Gemini CLI, GitHub Copilot, and any agent that supports the open Agent Skills (`SKILL.md`) format.
-
-📖 **How it works, the 6 conversion rules, and examples:** [Read the full post on Medium](MEDIUM_LINK_HERE)
+An agent skill that writes and audits landing pages built to convert. Works with Claude Code, Codex, Cursor, Gemini CLI, GitHub Copilot, and any agent that supports the open Agent Skills (`skill.md`) format.
 
 ---
 
 ## Quick install (any agent)
 
 ```bash
-npx skills add YOUR_GITHUB_USERNAME/pageflip
+npx skills add lekhanshojha/pageflip
 ```
 
 This detects which coding agents you have installed and puts the skill in the right folder for each.
 
 ## Manual install
 
-Download `SKILL.md` and put it in a `pageflip` folder inside your agent's skills directory.
+Download `skill.md` and put it in a `pageflip` folder inside your agent's skills directory.
 
 | Agent | All projects (global) | One project only |
 |---|---|---|
@@ -29,7 +27,7 @@ Download `SKILL.md` and put it in a `pageflip` folder inside your agent's skills
 **One-line example (Claude Code, global):**
 
 ```bash
-mkdir -p ~/.claude/skills/pageflip && curl -o ~/.claude/skills/pageflip/SKILL.md https://raw.githubusercontent.com/YOUR_GITHUB_USERNAME/pageflip/main/SKILL.md
+mkdir -p ~/.claude/skills/pageflip && curl -o ~/.claude/skills/pageflip/skill.md https://raw.githubusercontent.com/lekhanshojha/pageflip/main/skill.md
 ```
 
 For another agent, swap `~/.claude/skills` for that agent's path from the table.
@@ -42,4 +40,6 @@ Restart your agent after installing, then ask it which skills are available to c
 
 Ask your agent, for example: *"Write a landing page for my product"* or *"Audit our landing page."*
 
-It will create an `audience-voice.md` file in your project for you to fill with real customer quotes before it writes any copy.
+Before writing any copy, it creates an empty `audience-voice.md` in your project. Dump raw audience data into it: posts, comments, reviews, support emails, call notes, anything. No format needed.
+
+The agent reads it, finds the patterns itself, and saves what it learned to `audience-insights.md`. The page copy is built from that.
